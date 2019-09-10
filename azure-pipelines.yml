@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-container: oliverdaniell/crosstool-ng
+container: oliverdaniell/crosstool-ng:latest
 
 steps:
 - script: ct-ng build.2
