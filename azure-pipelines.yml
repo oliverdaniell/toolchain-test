@@ -13,3 +13,5 @@ container: oliverdaniell/crosstool-ng:latest
 
 steps:
 - script: ct-ng build.2
+- publish: $(System.DefaultWorkingDirectory)/x-tools
+  artifact: toolchain
