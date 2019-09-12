@@ -13,5 +13,13 @@ container: oliverdaniell/crosstool-ng:latest
 
 steps:
 - script: ct-ng build.2
-- publish: $(System.DefaultWorkingDirectory)/x-tools
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: $(System.DefaultWorkingDirectory)/x-tools
+    includeRootFolder: true 
+    archiveType: 'tar'
+    tarCompression: 'gz'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar.gz' 
+    replaceExistingArchive: true 
+- publish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).tar.gz'
   artifact: toolchain
